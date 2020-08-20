@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bai1</title>
+  </head>
+  <body>
+    <script>
+      n = 10;
+      length = Math.ceil(n/2);
+      document.write("<table border=1>");
+      for (let index = 1; index <= 2; index++) {
+        document.write("<tr>");
+        for (i = (index - 1) * length + 1; i <= length * index; i++) {
+          document.write("<td>");
+          for (j = 1; j <= 10; j++) {
+            document.write("<table>");
+            document.write("<tr>");
+            document.write("<td>" + i + "x" + j + "=" + j * i);
+            document.write("</td>");
+            document.write("</tr>");
+            document.write("</table>");
+          }
+          document.write("</td>");
+        }
+
+        document.write("</td> </tr>");
+      }
+      document.write("</table>");
+    </script>
+
+  </body>
+</html>

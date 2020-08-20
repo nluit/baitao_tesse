@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>bài 4</title>
+  </head>
+  <body>
+    <div style="display: block;">
+      <input type="text" id="number" /> <button id="btn">Ve tam giac</button>
+    </div>
+    <div id="root">
+      <div style="display: block;"></div>
+    </div>
+    <script>
+      document.getElementById("btn").addEventListener("click", vetamgiac);
+      function vetamgiac() {
+        let n = document.getElementById("number").value;
+        let str = "";
+        let data = [];
+        for (let index = 1; index <= n; index++) {
+          let arr = [];
+          for (let i = 0; i <index; i++) {
+              arr.push((index-i)%10)              
+          }
+          str += "<div style='display: block;'>";
+          arr.map((val) => {
+            str += "<span>" + val + "&nbsp;&nbsp;</span>";
+          });
+          str = str + "</div>";
+        }
+        document.getElementById("root").innerHTML = str;
+      }
+    </script>
+  </body>
+</html>

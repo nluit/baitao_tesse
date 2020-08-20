@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bai6</title>
+    <style>
+      .input {
+        padding: 5px;
+        margin-right: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <input
+      type="text"
+      id="number1"
+      onkeyup="onChange(this);"
+      class="input"
+      style="width: 50px;"
+    />
+    <button id="btn-plus" class="input">+</button>
+    <button id="btn-minus" class="input">-</button>
+    <button id="btn-multiple" class="input">*</button>
+    <button id="btn-division" class="input">/</button>
+    <button id="btn-pow" class="input">^</button>
+    <input
+      type="text"
+      id="number2"
+      class="input"
+      onkeyup="onChange(this);"
+      style="width: 50px;"
+    />
+    <label for="">=</label>
+    <input
+      type="text"
+      id="result"
+      class="input"
+      readonly
+      value=""
+      style="width: 50px;"
+    />
+    <script>
+      document.getElementById("btn-plus").addEventListener("click", btnPlusClick);
+      document.getElementById("btn-minus").addEventListener("click", btnMinusClick);
+      document.getElementById("btn-multiple").addEventListener("click", btnMultipleClick);
+      document.getElementById("btn-division").addEventListener("click", btnDivisionClick);
+      document.getElementById("btn-pow").addEventListener("click", btnPowClick);
+
+      function btnPlusClick() {
+        let number_1 = document.getElementById("number1").value;
+        let number_2 = document.getElementById("number2").value;
+        let result;
+        number_1 === "" || number_2 === ""
+          ? alert(" nhap so")
+          : (document.getElementById("result").value =
+              parseInt(number_1) + parseInt(number_2));
+      }
+      function btnMinusClick() {
+        let number_1 = document.getElementById("number1").value;
+        let number_2 = document.getElementById("number2").value;
+        let result;
+        number_1 === "" || number_2 === ""
+          ? alert(" nhap so")
+          : (document.getElementById("result").value =
+              parseInt(number_1) - parseInt(number_2));
+      }
+      function btnMultipleClick() {
+        let number_1 = document.getElementById("number1").value;
+        let number_2 = document.getElementById("number2").value;
+        let result;
+        number_1 === "" || number_2 === ""
+          ? alert(" nhap so")
+          : (document.getElementById("result").value =
+              parseInt(number_1) * parseInt(number_2));
+      }
+      function btnDivisionClick() {
+        let number_1 = document.getElementById("number1").value;
+        let number_2 = document.getElementById("number2").value;
+        let result;
+        number_1 === "" || number_2 === "" || parseInt(number_2) ===0
+          ? alert(" nhap so")
+          : (document.getElementById("result").value =
+              parseInt(number_1) / parseInt(number_2));
+      }
+      function btnPowClick() {
+        let number_1 = document.getElementById("number1").value;
+        let number_2 = document.getElementById("number2").value;
+        let result;
+        number_1 === "" || number_2 === ""
+          ? alert(" nhap so ")
+          : (document.getElementById("result").value = Math.pow(
+              parseInt(number_1),
+              parseInt(number_2)
+            ))
+      }
+      function onChange(event) {
+        event.value = event.value.replace(/\D/g, "");
+      }
+    </script>
+  </body>
+</html>

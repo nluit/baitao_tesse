@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>bài 5</title>
+  </head>
+  <body>
+    <div style="text-align: center; display: block;">
+      <input type="text" id="number" /> <button id="btn">Ve tam giac</button>
+    </div>
+    <div id="root">
+      <div style="text-align: center; display: block;"></div>
+    </div>
+    <script>
+      document.getElementById("btn").addEventListener("click", vetamgiac);
+      function vetamgiac() {
+        let n = document.getElementById("number").value;
+        let str = "";
+        let data = [];
+        for (let index = 1; index <= n; index++) {
+          let arr = [];
+          for (let i = 0; i < index; i++) {
+            arr.push(0);
+          }
+          let m = Math.ceil(index / 2);
+          for (let j = 0; j < m; j++) {
+            arr[j] = (index - j) % 10;
+            arr[index - j - 1] = (index - j) % 10;
+          }
+          str += "<div style='text-align: center; display: block;'>";
+          arr.map((val) => {
+            str += "<span>" + val + "&nbsp;&nbsp;</span>";
+          });
+          str = str + "</div>";
+        }
+        document.getElementById("root").innerHTML = str;
+      }
+    </script>
+  </body>
+</html>

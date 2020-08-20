@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bai7</title>
+    <style>
+      .bg-red {
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <table border="1">
+      <tr>
+        <td colspan="7" align="center" id="month"></td>
+      </tr>
+      <tr>
+        <th>Sun</th>
+        <th>M</th>
+        <th>Tue</th>
+        <th>W</th>
+        <th>Th</th>
+        <th>Fr</th>
+        <th>Sa</th>
+      </tr>
+      <tbody id="calendar"></tbody>
+    </table>
+    <script>
+      let today = new Date();
+      console.log(today.getDay())
+      let Month = today.getMonth();
+      let Year = today.getFullYear();
+      document.getElementById("month").innerHTML = Month + 1 + "-" + Year;
+      function Process(month, year) {
+        let firstDay = new Date(year, month).getDay();
+        let days = 32 - new Date(year, month, 32).getDate();
+        let table = document.getElementById("calendar");
+        table.innerHTML = "";
+        let date = 1;
+        for (let i = 0; i < 6; i++) {
+          let row = document.createElement("tr");
+          for (let j = 0; j < 7; j++) {
+            if (i === 0 && j < firstDay) {
+              let cell = document.createElement("td");
+              let text = document.createTextNode("");
+              cell.appendChild(text);
+              row.appendChild(cell);
+            } else {
+              let cell = document.createElement("td");
+              let text = document.createTextNode(date);
+              cell.appendChild(text);
+              row.appendChild(cell);
+              date++;
+            } 
+             if (date > days) {
+              break;
+            }  
+          }
+          table.appendChild(row);
+        }
+      }
+      Process(Month, Year);
+    </script>
+  </body>
+</html>

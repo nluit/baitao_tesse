@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>bai2</title>
+  </head>
+  <body>
+    Anh <input id="en" type="text" /> <br />
+    Phap <input id="fr" type="text" /> <br />
+    Duc <input id="ger" type="text" /> <br />
+    Nga <input id="rus" type="text" /> <br />
+    Nhat <input id="jpn" type="text" /> <br />
+    <button id="btn">Ve do thi</button>
+    <div id="root"></div>
+    <script>
+      var myArray = new Array();
+      myArray[0] = "en-Anh";
+      myArray[1] = "fr-Phap";
+      myArray[2] = "ger-Duc";
+      myArray[3] = "rus-Nga";
+      myArray[4] = "jpn-Nhat";
+      document.getElementById("btn").addEventListener("click", process);
+      function process() {
+        lists  =[];
+        for (let index = 0; index < myArray.length; index++) {
+            let  value = document.getElementById(myArray[index].split('-')[0]).value ||0
+            let obj ={
+                value : value  +'%',
+                id : myArray[index],
+                name : myArray[index].split('-')[1]
+            }
+            lists.push(obj)               
+                
+        }
+        let str ="<table border=`1`"
+
+        lists.map(val =>{
+            str +="<tr><td>"+val.name+"</td>";
+            str +="<td style='height: 10px; width: 100px;'>";
+            str +="<div id='result' style='height: 20px; position: relative;"+"background-color:red; width:"+val.value+"'>"
+            str +="<span style='color:blue'>"+val.value+"</span>"
+            str +="</div></td></tr>"
+
+        })
+        document.getElementById("root").innerHTML =  str
+      }
+    </script>
+  </body>
+</html>

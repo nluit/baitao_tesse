@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Đồng hồ</title>
+  </head>
+  <body>
+    <script>
+      var time = 0;
+      var status = 0;
+      function start() {
+        if (status == 0) {
+          status = 1;
+          inc();
+        }
+      }
+      function pause() {
+        status = 0;
+      }
+      function reset() {
+        document.getElementById("output").innerHTML = "00:00.00";
+        pause();
+        time = 0;
+      }
+      function inc() {
+        if (status == 1) {
+          setTimeout(function () {
+            time++;
+            var min = Math.floor(time / 10 / 60);
+            var sec = Math.floor((time / 10) % 60);
+            var million = time % 10;
+            if (min < 10) {
+              min = "0" + min;
+            }
+            if (sec < 10) {
+              sec = "0" + sec;
+            }
+            document.getElementById("output").innerHTML =
+               min + ":" + sec + "." + million + "0";
+            inc();
+          }, 100);
+        }
+      }
+    </script>
+
+    <div id="output">00:00.00</div>
+    <button onclick="start()">
+      Bat dau
+    </button>
+    <button onclick="pause()">
+      Dung
+    </button>
+    <button onclick="reset()">Reset</button>
+  </body>
+</html>
